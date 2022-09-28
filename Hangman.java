@@ -1,22 +1,32 @@
+import java.util.Random;
 public class Hangman{
     
-
-
-    Hangman(){
-
+    //properties
+    StringBuffer secretWord;
+    StringBuffer allLetters;
+    StringBuffer usedLetters;
+    int numberOfIncorrectTries;
+    int maxAllowedIncorrectTries;
+    StringBuffer knownSoFar;
+    //list of words that can be selected from
+    String[] fixedList = {"banana", "apple", "watermelon", "kiwi", "dragonfruit"};
+    
         
-    }    
-
-    Hangman (StringBuffer secretWord){
-        //used to remove/append to usedLetters (when it gets removed, it becomes "used")
-        StringBuffer allLetters = new StringBuffer(26);
+    //constructor
+    Hangman(){
+        //generating a random number
+        Random randomWord = new Random();
+        int randomNumber = randomWord.nextInt(fixedList.length-1);
+        
+        numberOfIncorrectTries = 0;
+        //"default max 6 incorrect tries"
+        maxAllowedIncorrectTries = 6;
+        //"english alphabet"
         allLetters.append("abcdefghijklmnopqrstuvwxyz");
-
-        //used to record the used letters (to see if the user inputs the same characters)
-        StringBuffer usedLetters = new StringBuffer(26);
-
-        int numberOfIncorrectTries = 0;
-        int maxAllowedIncorrectTries = 6;
-
+        //"chooses secretWord from fixed list"
+        secretWord.append(fixedList[randomNumber]);
+        
+        
     }
+    
 }
