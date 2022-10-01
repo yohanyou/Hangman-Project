@@ -1,18 +1,18 @@
 import java.util.Random;
-public class Hangman{
-    
-    //properties
+
+public class Hangman {
+
+    // properties
     StringBuffer secretWord;
     StringBuffer allLetters;
     StringBuffer usedLetters;
-    int numberOfIncorrectTries;
+    int numberOfIncorrectTries = 0;
     int maxAllowedIncorrectTries;
     StringBuffer knownSoFar;
-    //list of words that can be selected from
-    String[] fixedList = {"banana", "apple", "watermelon", "kiwi", "dragonfruit"};
-    
-        
-    //constructor
+    // list of words that can be selected from
+    String[] fixedList = { "banana", "apple", "watermelon", "kiwi", "dragonfruit" };
+
+    // constructor
     Hangman(){
         //generating a random number
         Random randomWord = new Random();
@@ -28,5 +28,73 @@ public class Hangman{
         
         
     }
-    
+
+    // gui
+    // not 100% ready waiting others to complete..
+
+    while(numberOfIncorrectTries<=6)
+
+    {
+
+        if (numberOfIncorrectTries = 1) {
+            System.out.println("");
+            System.out.println("");
+            System.out.println("          O");
+            System.out.println("|        -|-");
+            System.out.println("|        / \");
+            System.out.println("|");
+        }
+
+        else if (numberOfIncorrectTries == 2) {
+            System.out.println("|");
+            System.out.println("|");
+            System.out.println("|         O");
+            System.out.println("|        -|-");
+            System.out.println("|        / \");
+            System.out.println("|");
+
+        }
+
+        else if (numberOfIncorrectTries == 3) {
+            System.out.println("|_____");
+            System.out.println("|");
+            System.out.println("|         O");
+            System.out.println("|        -|-");
+            System.out.println("|        / \");
+            System.out.println("|");
+
+        }
+
+        else if (numberOfIncorrectTries == 4) {
+            System.out.println("|__________");
+            System.out.println("|");
+            System.out.println("|         O");
+            System.out.println("|        -|-");
+            System.out.println("|        / \");
+            System.out.println("|");
+
+        }
+
+        else if (numberOfIncorrectTries == 5) {
+            System.out.println("|__________");
+            System.out.println("|         |");
+            System.out.println("|          ");
+            System.out.println("|         O");
+            System.out.println("|        -|-");
+            System.out.println("|        / \");
+
+        }
+
+        else if (numberOfIncorrectTries == 5) {
+            System.out.println("|__________");
+            System.out.println("|         |");
+            System.out.println("|         |");
+            System.out.println("|         O");
+            System.out.println("|        -|-");
+            System.out.println("|        / \");
+
+        }
+
+    }
+
 }
