@@ -10,7 +10,7 @@ public class Hangman {
     int maxAllowedIncorrectTries;
     StringBuffer knownSoFar;
     // list of words that can be selected from
-    String[] fixedList = { "banana", "apple", "watermelon", "kiwi", "dragonfruit" };
+    String [] fixedList = { "banana", "apple", "watermelon", "kiwi", "dragonfruit" };
 
     // constructor
     Hangman(){
@@ -25,8 +25,8 @@ public class Hangman {
         allLetters.append("abcdefghijklmnopqrstuvwxyz");
         //"chooses secretWord from fixed list"
         secretWord.append(fixedList[randomNumber]);
-        
-        
+
+        chooseSecretWord();
     }
 
     public int getNumOfIncorrectTries()
@@ -34,13 +34,66 @@ public class Hangman {
         return numberOfIncorrectTries;
     }
 
+    public String getAllLetters()
+    {
+        String str = allLetters.toString();
+        return str;
+    }
+
+    public String getUsedLetters()
+    {
+        String str = usedLetters.toString();
+        return str;
+    }
+
+    /**
+     * Checks if player has lost or not and decides game is over or not. 
+     * @return 
+     */
+    public boolean isGameOver()
+    {
+      if(hasLost() == true)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    /**
+     * If incorrect tries surpasses allowed limit, it means player has lost
+     * @return
+     */
+    public boolean hasLost()
+    {
+        if(numberOfIncorrectTries > maxAllowedIncorrectTries)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+     * Finds a random index and then according to that index chooses random word from the list. 
+     * @return
+     */
+    private String chooseSecretWord()
+    {
+        Random random = new Random();
+        int randomIndex = random.nextInt(fixedList.length); // creating a random index to get a word from the list. 
+        return fixedList[randomIndex];
+    }
+
     // gui
     // not 100% ready waiting others to complete..
 
-    
     public static void main(String [] args){
 
-    
         Hangman demo = new Hangman();
         int numberOfIncorrectTries = demo.getNumOfIncorrectTries();
 
