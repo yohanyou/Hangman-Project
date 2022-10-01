@@ -29,72 +29,85 @@ public class Hangman {
         
     }
 
+    public int getNumOfIncorrectTries()
+    {
+        return numberOfIncorrectTries;
+    }
+
     // gui
     // not 100% ready waiting others to complete..
 
-    while(numberOfIncorrectTries<=6)
+    
+    public static void main(String [] args){
 
-    {
+    
+        Hangman demo = new Hangman();
+        int numberOfIncorrectTries = demo.getNumOfIncorrectTries();
 
-        if (numberOfIncorrectTries = 1) {
-            System.out.println("");
-            System.out.println("");
-            System.out.println("          O");
-            System.out.println("|        -|-");
-            System.out.println("|        / \");
-            System.out.println("|");
-        }
+        while(numberOfIncorrectTries<=6)
 
-        else if (numberOfIncorrectTries == 2) {
-            System.out.println("|");
-            System.out.println("|");
-            System.out.println("|         O");
-            System.out.println("|        -|-");
-            System.out.println("|        / \");
-            System.out.println("|");
+        {
 
-        }
+            if (numberOfIncorrectTries == 1) {
+                System.out.println("");
+                System.out.println("");
+                System.out.println("          O");
+                System.out.println("|        -|-");
+                System.out.println("|        / \"");
+                System.out.println("|");
+            }
 
-        else if (numberOfIncorrectTries == 3) {
-            System.out.println("|_____");
-            System.out.println("|");
-            System.out.println("|         O");
-            System.out.println("|        -|-");
-            System.out.println("|        / \");
-            System.out.println("|");
+            else if (numberOfIncorrectTries == 2) {
+                System.out.println("|");
+                System.out.println("|");
+                System.out.println("|         O");
+                System.out.println("|        -|-");
+                System.out.println("|        / \"");
+                System.out.println("|");
 
-        }
+            }
 
-        else if (numberOfIncorrectTries == 4) {
-            System.out.println("|__________");
-            System.out.println("|");
-            System.out.println("|         O");
-            System.out.println("|        -|-");
-            System.out.println("|        / \");
-            System.out.println("|");
+            else if (numberOfIncorrectTries == 3) {
+                System.out.println("|_____");
+                System.out.println("|");
+                System.out.println("|         O");
+                System.out.println("|        -|-");
+                System.out.println("|        / \"");
+                System.out.println("|");
 
-        }
+            }
 
-        else if (numberOfIncorrectTries == 5) {
-            System.out.println("|__________");
-            System.out.println("|         |");
-            System.out.println("|          ");
-            System.out.println("|         O");
-            System.out.println("|        -|-");
-            System.out.println("|        / \");
+            else if (numberOfIncorrectTries == 4) {
+                System.out.println("|__________");
+                System.out.println("|");
+                System.out.println("|         O");
+                System.out.println("|        -|-");
+                System.out.println("|        / \"");
+                System.out.println("|");
 
-        }
+            }
 
-        else if (numberOfIncorrectTries == 5) {
-            System.out.println("|__________");
-            System.out.println("|         |");
-            System.out.println("|         |");
-            System.out.println("|         O");
-            System.out.println("|        -|-");
-            System.out.println("|        / \");
+            else if (numberOfIncorrectTries == 5) {
+                System.out.println("|__________");
+                System.out.println("|         |");
+                System.out.println("|          ");
+                System.out.println("|         O");
+                System.out.println("|        -|-");
+                System.out.println("|        / \"");
+
+            }
+
+            else if (numberOfIncorrectTries == 5) {
+                System.out.println("|__________");
+                System.out.println("|         |");
+                System.out.println("|         |");
+                System.out.println("|         O");
+                System.out.println("|        -|-");
+                System.out.println("|        / \"");
+
+            }
 
         }
 
     }
-
 }
