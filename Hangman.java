@@ -50,22 +50,23 @@ public class Hangman {
         return maxAllowedIncorrectTries;
     }
 
-    public static String getKnownSoFar() {
+    public static StringBuffer getKnownSoFar() {
 
-        String theWord = "";
+        StringBuffer theWord = new StringBuffer();
         for (int k = 0; k < secretWord.length(); k++) {
-            for(int j = 0; j <= usedLetters.length(); j++){
+            for(int j = 0; j < usedLetters.length(); j++){
                 if (secretWord.substring(k).equals(usedLetters.substring(j))) {
-                   theWord.replace(theWord.substring(k), usedLetters.substring(j));
+                   theWord.insert(k, usedLetters.substring(j));
                 }
                 else {
-                    theWord.replace(theWord.substring(k), "_");
+                    theWord.insert(k, "_");
                 }
             
             }
         }
-        theWord = knownSoFar.substring(0); // why we need it?
-        return theWord;
+        //theWord = knownSoFar.substring(0); // why we need it?
+        //return theWord;
+        return(theWord);
     };
 
     public int tryThis(char letter) {
