@@ -1,14 +1,15 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Hangman {
 
     // properties
-    StringBuffer secretWord;
-    StringBuffer allLetters;
-    StringBuffer usedLetters;
-    int numberOfIncorrectTries = 0;
+    static StringBuffer secretWord = new StringBuffer();
+    StringBuffer allLetters = new StringBuffer();
+    static StringBuffer usedLetters = new StringBuffer();
+    int numberOfIncorrectTries;
     int maxAllowedIncorrectTries;
-    StringBuffer knownSoFar;
+    static StringBuffer knownSoFar = new StringBuffer();
     // list of words that can be selected from
     String[] fixedList = { "banana", "apple", "watermelon", "kiwi", "dragonfruit" };
 
@@ -25,6 +26,7 @@ public class Hangman {
         allLetters.append("abcdefghijklmnopqrstuvwxyz");
         // "chooses secretWord from fixed list"
         secretWord.append(fixedList[randomNumber]);
+        knownSoFar.append(secretWord);
 
         chooseSecretWord();
     }
@@ -47,13 +49,14 @@ public class Hangman {
         return maxAllowedIncorrectTries;
     }
 
-    public String getKnownSoFar() {
+    public static String getKnownSoFar() {
 
         String theWord = "";
         for (int k = 0; k < secretWord.length(); k++) {
             if (secretWord.substring(0).substring(k, k + 1).equals(usedLetters.substring(k, k + 1))) {
                 knownSoFar.setCharAt(k, usedLetters.charAt(k));
-            } else {
+            } 
+            else {
                 knownSoFar.setCharAt(k, '_');
             }
         }
@@ -118,6 +121,13 @@ public class Hangman {
 
         Hangman demo = new Hangman();
         int numberOfIncorrectTries = demo.getNumOfIncorrectTries();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Welcome to Hangman!");
+        System.out.println("Guess the letters of the word:");
+        System.out.println(getKnownSoFar());
+        
+
 
         while (numberOfIncorrectTries <= 6)
 
@@ -172,13 +182,16 @@ public class Hangman {
 
             }
 
-            else if (numberOfIncorrectTries == 5) {
+            else if (numberOfIncorrectTries == 6) {
                 System.out.println("|__________");
                 System.out.println("|         |");
                 System.out.println("|         |");
                 System.out.println("|         O");
                 System.out.println("|        -|-");
                 System.out.println("|        / \"");
+                System.out.println("GAME OVER!!!");
+
+
 
             }
 
