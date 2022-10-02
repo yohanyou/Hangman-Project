@@ -27,6 +27,7 @@ public class Hangman {
         // "chooses secretWord from fixed list"
         secretWord.append(fixedList[randomNumber]);
         knownSoFar.append(secretWord);
+        usedLetters.append("0");
 
         chooseSecretWord();
     }
@@ -53,16 +54,19 @@ public class Hangman {
 
         String theWord = "";
         for (int k = 0; k < secretWord.length(); k++) {
-            if (secretWord.substring(0).substring(k, k + 1).equals(usedLetters.substring(k, k + 1))) {
-                knownSoFar.setCharAt(k, usedLetters.charAt(k));
-            } 
-            else {
-                knownSoFar.setCharAt(k, '_');
+            for(int j = 0; j <= usedLetters.length(); j++){
+                if (secretWord.substring(k).equals(usedLetters.substring(j))) {
+                   theWord.replace(theWord.substring(k), usedLetters.substring(j));
+                }
+                else {
+                    theWord.replace(theWord.substring(k), "_");
+                }
+            
             }
         }
-        theWord = knownSoFar.substring(0);
+        theWord = knownSoFar.substring(0); // why we need it?
         return theWord;
-    }
+    };
 
     public int tryThis(char letter) {
 
