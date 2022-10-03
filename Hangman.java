@@ -5,16 +5,17 @@ public class Hangman {
 
     // properties
     static StringBuffer secretWord = new StringBuffer();
-    StringBuffer allLetters = new StringBuffer();
+    static StringBuffer allLetters = new StringBuffer();
     static StringBuffer usedLetters = new StringBuffer();
-    int numberOfIncorrectTries;
-    int maxAllowedIncorrectTries;
+    static int numberOfIncorrectTries;
+    static int maxAllowedIncorrectTries;
     static StringBuffer knownSoFar = new StringBuffer();
     // list of words that can be selected from
-    String[] fixedList = { "banana", "apple", "watermelon", "kiwi", "dragonfruit" };
+    static String[] fixedList = { "banana", "apple", "watermelon", "kiwi", "dragonfruit" };
 
     // constructor
     Hangman() {
+        
         // generating a random number
         Random randomWord = new Random();
         int randomNumber = randomWord.nextInt(fixedList.length - 1);
@@ -30,13 +31,14 @@ public class Hangman {
         usedLetters.append("0");
 
         chooseSecretWord();
+
     }
 
     public int getNumOfIncorrectTries() {
         return numberOfIncorrectTries;
     }
 
-    public String getAllLetters() {
+    public static String getAllLetters() {
         String str = allLetters.toString();
         return str;
     }
@@ -69,7 +71,7 @@ public class Hangman {
         return(theWord);
     };
 
-    public int tryThis(char letter) {
+    public static int tryThis(char letter) {
 
         int occurencesInTheWord = 0;
         String theWord = secretWord.substring(0);
@@ -99,7 +101,7 @@ public class Hangman {
      * 
      * @return
      */
-    public boolean hasLost() {
+    public static boolean hasLost() {
         if (numberOfIncorrectTries > maxAllowedIncorrectTries) {
             return true;
         } else {
@@ -113,7 +115,7 @@ public class Hangman {
      * 
      * @return
      */
-    private String chooseSecretWord() {
+    public static String chooseSecretWord() {
         Random random = new Random();
         int randomIndex = random.nextInt(fixedList.length); // creating a random index to get a word from the list.
         return fixedList[randomIndex];
@@ -128,9 +130,16 @@ public class Hangman {
         int numberOfIncorrectTries = demo.getNumOfIncorrectTries();
         Scanner sc = new Scanner(System.in);
 
+        chooseSecretWord();
         System.out.println("Welcome to Hangman!");
         System.out.println("Guess the letters of the word:");
+        while(!hasLost()){
+        char letterGuess = sc.next().charAt(0);
+        tryThis(letterGuess);
         System.out.println(getKnownSoFar());
+        }
+
+        
         
 
 
@@ -203,5 +212,4 @@ public class Hangman {
         }
 
     }
-
 }
